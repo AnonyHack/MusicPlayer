@@ -27,7 +27,7 @@ class Config:
     def __init__(self) -> None:
         self.API_ID: str = os.environ.get("API_ID", 25753873)
         self.API_HASH: str = os.environ.get("API_HASH", 3a5cdc2079cd76af80586102bd9761e2)
-        self.SESSION: str = os.environ.get("SESSION", None)
+        self.SESSION: str = os.environ.get("SESSION", iMusicTest)
         self.BOT_TOKEN: str = os.environ.get("BOT_TOKEN", 8243504414:AAHXFY4JT_JeqAY9fksgsmqvhWSujB91Xkw)
         self.SUDOERS: list = [
             int(id) for id in os.environ.get("SUDOERS", " ").split() if id.isnumeric()
