@@ -19,22 +19,23 @@ along with this program.  If not, see <https://www.gnu.org/licenses/>
 import os
 from dotenv import load_dotenv
 
-
 load_dotenv()
-
 
 class Config:
     def __init__(self) -> None:
-        self.API_ID: str = os.environ.get("API_ID", 25753873)
-        self.API_HASH: str = os.environ.get("API_HASH", 3a5cdc2079cd76af80586102bd9761e2)
-        self.SESSION: str = os.environ.get("SESSION", iMusicTest)
-        self.BOT_TOKEN: str = os.environ.get("BOT_TOKEN", 8243504414:AAHXFY4JT_JeqAY9fksgsmqvhWSujB91Xkw)
+        self.API_ID: str = os.environ.get("API_ID", "25753873")
+        self.API_HASH: str = os.environ.get("API_HASH", "3a5cdc2079cd76af80586102bd9761e2")
+        self.SESSION: str = os.environ.get("SESSION", "iMusicTest")
+        self.BOT_TOKEN: str = os.environ.get("BOT_TOKEN", "8243504414:AAHXFY4JT_JeqAY9fksgsmqvhWSujB91Xkw")
+        
         self.SUDOERS: list = [
-            int(id) for id in os.environ.get("SUDOERS", " ").split() if id.isnumeric()
+            int(id) for id in os.environ.get("SUDOERS", "").split() if id.isnumeric()
         ]
+
         if not self.SESSION or not self.API_ID or not self.API_HASH:
             print("ERROR: SESSION, API_ID and API_HASH is required!")
             quit(0)
+
         self.SPOTIFY: bool = False
         self.QUALITY: str = os.environ.get("QUALITY", "high").lower()
         self.PREFIXES: list = os.environ.get("PREFIX", "/").split()
@@ -44,9 +45,9 @@ class Config:
             if (os.environ.get("STREAM_MODE", "audio").lower() == "audio")
             else "video"
         )
-        self.ADMINS_ONLY: bool = os.environ.get("ADMINS_ONLY", False)
+        self.ADMINS_ONLY: bool = os.environ.get("ADMINS_ONLY", "False").lower() == "true"
         self.SPOTIFY_CLIENT_ID: str = os.environ.get("SPOTIFY_CLIENT_ID", None)
         self.SPOTIFY_CLIENT_SECRET: str = os.environ.get("SPOTIFY_CLIENT_SECRET", None)
 
-
 config = Config()
+
